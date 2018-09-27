@@ -24,6 +24,8 @@ Give the app a name and select the workspace. Navigate to incoming webhooks and 
 
 "Add New Webhook to Workspace" and select the channel where you want the messages to show up. Remember the webhook URL for the next step.
 
+You can use the "icinga-logo.png" in the images-folder for your app to easily identify messages from Icinga2.
+
 ## SETUP ICINGA2
 
 Add Icinga2 notification commands:

@@ -22,6 +22,9 @@
 # Click "Add New Webhook to Workspace --> Choose channel <#your_channel> --> Authorize
 # Copy the Webhook URL and add it to the Icinga2 users configuration above
 #
+# You can use the "icinga-logo.png" in the images-folder for your app to easily identify messages from Icinga2.
+#
+#
 # Add Icinga2 notification commands:
 #
 # object NotificationCommand "slack-host-notification" {
