@@ -9,7 +9,20 @@
 # Place this script in /usr/local/bin for example (please change the following
 # command definition if you chose another location).
 #
-# Add an Icinga2 notification commands:
+# Setup your slack workspace:
+#
+# To connect this notification script with slack, you'll have to add an app to your slack workspace.
+# Navigate to https://api.slack.com/apps?new_app=1
+#
+# App Name: Icinga
+# Development Slack Workspace: <choose your workspace>
+# You can upload the icinga-logo.png to easily identify Icinga2 notifications
+#
+# Click "Add Incoming Webhooks" and activate them
+# Click "Add New Webhook to Workspace --> Choose channel <#your_channel> --> Authorize
+# Copy the Webhook URL and add it to the Icinga2 users configuration above
+#
+# Add Icinga2 notification commands:
 #
 # object NotificationCommand "slack-host-notification" {
 #         command = [ "/usr/local/bin/slack-icinga.py" ]
@@ -69,7 +82,7 @@
 #         }
 # }
 #
-# Add Icinga2 Slack user:
+# Add an Icinga2 Slack user:
 #
 # object User "slack" {
 #         import "generic-user"
@@ -78,7 +91,7 @@
 #         vars.slack_url  = "<incoming_webhook_url>"
 # }
 #
-# Add Icinga2 Notification to host and service:
+# Add Icinga2 notifications to hosts and services:
 #
 # apply Notification "24x7-slack-host-notification" to Host {
 #         import "slack-host-notification"
@@ -102,19 +115,6 @@
 #         ignore where service.name == "backup_diskspace"
 # }
 #
-#
-# Setup your slack workspace:
-#
-# To connect this notification script with slack, you'll have to add an app to your slack workspace.
-# Navigate to https://api.slack.com/apps and click "Create New App"
-#
-# App Name: Icinga
-# Development Slack Workspace: <choose your workspace>
-# You can upload the icinga-logo.png to easily identify Icinga2 notifications
-#
-# Click "Add Incoming Webhooks" and activate them
-# Click "Add New Webhook to Workspace --> Choose channel <#your_channel> --> Authorize
-# Copy the Webhook URL and add it to the Icinga2 users configuration above
 #
 # You can simply add more slack workspaces (for example of your customers) and apply notifications for their hosts and services.
 #
