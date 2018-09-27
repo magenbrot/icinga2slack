@@ -110,7 +110,7 @@
 #
 #         vars.slack_url = service.vars.slack_url
 #
-#         assign where host.vars.notifications == "_24x7"
+#         assign where host.vars.notifications == "24x7"
 #         ignore where match("*ssl-cert*",service.name)
 #         ignore where service.name == "backup_diskspace"
 # }
