@@ -1,6 +1,6 @@
 # icinga2slack
 
-Python script to post Icinga2 notifications to you slack workspace. It was tested with Icinga2, but it should work with little modifications on Icinga/Nagios, too.
+Python script to post Icinga2 notifications to your slack workspace. It was tested with Icinga2, but it should work with little modifications on Icinga/Nagios, too.
 
 ## PREREQUISITES
 
