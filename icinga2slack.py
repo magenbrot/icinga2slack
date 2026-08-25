@@ -126,7 +126,6 @@
 
 """
 
-from __future__ import print_function
 import sys
 
 try:
@@ -134,7 +133,7 @@ try:
     import requests
 
 except ImportError as error:
-    print("Missing python module: {}".format(error.message))
+    print("Missing python module: {}".format(str(error)))
     sys.exit(255)
 
 def main():
@@ -157,15 +156,14 @@ def main():
     #for key,value in msg_dict.items():
     #    print(key,value)
 
-    message = msg_dict["NOTIFICATIONTYPE"] + ": " + msg_dict["HOSTALIAS"]
+    message = msg_dict.get("NOTIFICATIONTYPE", "") + ": " + msg_dict.get("HOSTALIAS", "")
     if "SERVICEDESC" in msg_dict:
-        message += " / " + msg_dict["SERVICEDESC"] + " is " + msg_dict["SERVICESTATE"] + ":\n" + msg_dict["SERVICEOUTPUT"]
+        message += " / " + msg_dict.get("SERVICEDESC", "") + " is " + msg_dict.get("SERVICESTATE", "") + ":\n" + msg_dict.get("SERVICEOUTPUT", "")
     elif "HOSTSTATE" in msg_dict:
-        message += " is " + msg_dict["HOSTSTATE"] + ":\n" + msg_dict["HOSTOUTPUT"]
+        message += " is " + msg_dict.get("HOSTSTATE", "") + ":\n" + msg_dict.get("HOSTOUTPUT", "")
 
     payload = {'text': message + '\n'}
-    print(payload)
-    r = requests.post(options.url, json=payload, headers=headers)
+    r = requests.post(options.url, json=payload, headers=headers, timeout=10)
     
     if r.status_code != 200:
         raise ValueError('Request to slack returned an error %s, the response is:\n%s' % (r.status_code, r.text))
